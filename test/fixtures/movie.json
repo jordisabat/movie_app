@@ -1,0 +1,20 @@
+{
+  "popularity": 2700.167,
+  "vote_count": 178,
+  "video": false,
+  "poster_path": "/7D430eqZj8y3oVkLFfsWXGRcpEG.jpg",
+  "id": 528085,
+  "adult": false,
+  "backdrop_path": "/5UkzNSOK561c2QRy2Zr4AkADzLT.jpg",
+  "original_language": "en",
+  "original_title": "2067",
+  "genre_ids": [
+    18,
+    878,
+    53
+  ],
+  "title": "2067",
+  "vote_average": 5.6,
+  "overview": "A lowly utility worker is called to the future by a mysterious radio signal...",
+  "release_date": "2020-10-01"
+}
