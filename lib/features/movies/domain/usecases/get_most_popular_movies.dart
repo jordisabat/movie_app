@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/core/failures.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/repositories/movies_repository.dart';
+
+import '../../../../core/error/failures.dart';
+import '../entities/movie.dart';
+import '../repositories/movies_repository.dart';
 
 class GetMostPopularMovies {
   final MovieRepository repository;

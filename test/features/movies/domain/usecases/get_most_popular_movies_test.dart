@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/repositories/movies_repository.dart';
-import 'package:movie_app/domain/usecases/get_most_popular_movies.dart';
+import 'package:movie_app/features/movies/domain/entities/movie.dart';
+import 'package:movie_app/features/movies/domain/repositories/movies_repository.dart';
+import 'package:movie_app/features/movies/domain/usecases/get_most_popular_movies.dart';
 
 class MockMovieRepository extends Mock implements MovieRepository {}
 
