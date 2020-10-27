@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
 import '../entities/movie.dart';
-import '../repositories/movies_repository.dart';
+import '../repositories/movie_repository.dart';
 
 class GetMostPopularMovies {
   final MovieRepository repository;
