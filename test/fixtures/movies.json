@@ -1,0 +1,102 @@
+[
+  {
+    "popularity": 2700.167,
+    "vote_count": 178,
+    "video": false,
+    "poster_path": "/7D430eqZj8y3oVkLFfsWXGRcpEG.jpg",
+    "id": 528085,
+    "adult": false,
+    "backdrop_path": "/5UkzNSOK561c2QRy2Zr4AkADzLT.jpg",
+    "original_language": "en",
+    "original_title": "2067",
+    "genre_ids": [
+      18,
+      878,
+      53
+    ],
+    "title": "2067",
+    "vote_average": 5.6,
+    "overview": "A lowly utility worker is called to the future by a mysterious radio signal, he must leave his dying wife to embark on a journey that will force him to face his deepest fears in an attempt to change the fabric of reality and save humankind from its greatest environmental crisis yet.",
+    "release_date": "2020-10-01"
+  },
+  {
+    "popularity": 2439.455,
+    "vote_count": 15,
+    "video": false,
+    "poster_path": "/ugZW8ocsrfgI95pnQ7wrmKDxIe.jpg",
+    "id": 724989,
+    "adult": false,
+    "backdrop_path": "/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
+    "original_language": "en",
+    "original_title": "Hard Kill",
+    "genre_ids": [
+      28,
+      53
+    ],
+    "title": "Hard Kill",
+    "vote_average": 3.7,
+    "overview": "The work of billionaire tech CEO Donovan Chalmers is so valuable that he hires mercenaries to protect it, and a terrorist group kidnaps his daughter just to get it.",
+    "release_date": "2020-10-23"
+  },
+  {
+    "popularity": 1570.599,
+    "vote_count": 122,
+    "video": false,
+    "poster_path": "/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
+    "id": 741067,
+    "adult": false,
+    "backdrop_path": "/aO5ILS7qnqtFIprbJ40zla0jhpu.jpg",
+    "original_language": "en",
+    "original_title": "Welcome to Sudden Death",
+    "genre_ids": [
+      28,
+      12,
+      18,
+      53
+    ],
+    "title": "Welcome to Sudden Death",
+    "vote_average": 6.4,
+    "overview": "Jesse Freeman is a former special forces officer and explosives expert now working a regular job as a security guard in a state-of-the-art basketball arena. Trouble erupts when a tech-savvy cadre of terrorists kidnap the team's owner and Jesse's daughter during opening night. Facing a ticking clock and impossible odds, it's up to Jesse to not only save them but also a full house of fans in this highly charged action thriller.",
+    "release_date": "2020-09-29"
+  },
+  {
+    "popularity": 1491.141,
+    "vote_count": 2233,
+    "video": false,
+    "poster_path": "/riYInlsq2kf1AWoGm80JQW5dLKp.jpg",
+    "id": 497582,
+    "adult": false,
+    "backdrop_path": "/kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg",
+    "original_language": "en",
+    "original_title": "Enola Holmes",
+    "genre_ids": [
+      80,
+      18,
+      9648
+    ],
+    "title": "Enola Holmes",
+    "vote_average": 7.6,
+    "overview": "While searching for her missing mother, intrepid teen Enola Holmes uses her sleuthing skills to outsmart big brother Sherlock and help a runaway lord.",
+    "release_date": "2020-09-23"
+  },
+  {
+    "popularity": 1175.088,
+    "vote_count": 0,
+    "video": false,
+    "poster_path": "/4q2hz2m8hubgvijz8Ez0T2Os2Yv.jpg",
+    "id": 520763,
+    "adult": false,
+    "backdrop_path": "/z2UtGA1WggESspi6KOXeo66lvLx.jpg",
+    "original_language": "en",
+    "original_title": "A Quiet Place Part II",
+    "genre_ids": [
+      18,
+      878,
+      53
+    ],
+    "title": "A Quiet Place Part II",
+    "vote_average": 0,
+    "overview": "Following the events at home, the Abbott family now face the terrors of the outside world. Forced to venture into the unknown, they realize that the creatures that hunt by sound are not the only threats that lurk beyond the sand path.",
+    "release_date": "2021-04-21"
+  }
+]

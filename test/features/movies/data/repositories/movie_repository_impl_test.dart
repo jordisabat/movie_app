@@ -48,7 +48,7 @@ void main() async {
       'it should return data when the call to movie data source is successful',
       () async {
         // arrange
-        final tMovies = await fixtureMovies('most_popular_movies.json');
+        final tMovies = await fixtureMovies('movies.json');
         when(mockMovieDataSource.getMostPopularMovies())
             .thenAnswer((_) async => tMovies);
         // act
