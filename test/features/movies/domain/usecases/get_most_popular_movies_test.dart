@@ -77,7 +77,7 @@ void main() {
       when(mockMovieRepository.getMostPopularMovies())
           .thenAnswer((_) async => Right(tMovies));
       // act
-      final movies = await usecase.execute();
+      final movies = await usecase();
       // assert
       expect(movies, Right(tMovies));
       verify(mockMovieRepository.getMostPopularMovies());

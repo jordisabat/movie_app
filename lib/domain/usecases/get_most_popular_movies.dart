@@ -8,7 +8,7 @@ class GetMostPopularMovies {
 
   GetMostPopularMovies(this.repository);
 
-  Future<Either<Failure, List<Movie>>> execute() async {
+  Future<Either<Failure, List<Movie>>> call() async {
     return await repository.getMostPopularMovies();
   }
 }
