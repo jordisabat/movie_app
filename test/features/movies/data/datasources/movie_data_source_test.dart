@@ -64,6 +64,34 @@ main() async {
   );
 
   test(
+    'should return empty List of Movies when the response code is 200 (success) but result field is missing',
+    () async {
+      // arrange
+      when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
+          (_) async => http.Response(
+              fixture('api_response_results_field_is_missing.json'), 200));
+      // act
+      final result = await dataSource.getMostPopularMovies();
+      // assert
+      expect(result, equals([]));
+    },
+  );
+
+  test(
+    'should return empty List of Movies when the response code is 200 (success) but result is empty',
+    () async {
+      // arrange
+      when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
+          (_) async => http.Response(
+              fixture('api_response_results_field_is_empty.json'), 200));
+      // act
+      final result = await dataSource.getMostPopularMovies();
+      // assert
+      expect(result, equals([]));
+    },
+  );
+
+  test(
     'should throw a ServerException when the response code is 404 or other',
     () async {
       // arrange

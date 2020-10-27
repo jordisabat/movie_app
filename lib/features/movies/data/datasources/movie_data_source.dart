@@ -35,6 +35,9 @@ class MovieDataSourceImpl implements MovieDataSource {
 
     if (response.statusCode == 200) {
       final apiResponse = ApiResponse.fromJson(json.decode(response.body));
+      if (apiResponse.results == null || apiResponse.results.isEmpty) {
+        return [];
+      }
       return apiResponse.results;
     } else {
       throw ServerException();
