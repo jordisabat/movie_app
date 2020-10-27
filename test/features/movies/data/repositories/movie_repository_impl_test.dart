@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_app/core/error/exceptions.dart';
 import 'package:movie_app/core/error/failures.dart';
-import 'package:movie_app/core/platform/network_info.dart';
+import 'package:movie_app/core/network/network_info.dart';
 import 'package:movie_app/features/movies/data/datasources/movie_data_source.dart';
 import 'package:movie_app/features/movies/data/repositories/movie_repository_impl.dart';
 
