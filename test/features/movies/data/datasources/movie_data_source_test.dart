@@ -10,7 +10,7 @@ import '../../../../fixtures/fixture_reader.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
-void main() {
+main() async {
   MovieDataSourceImpl dataSource;
   MockHttpClient mockHttpClient;
 
@@ -19,9 +19,11 @@ void main() {
     dataSource = MovieDataSourceImpl(client: mockHttpClient);
   });
 
+  final tMoviesModels = await fixtureMovies('movies.json');
+
   void setUpMockHttpClientSuccess200() {
-    when(mockHttpClient.get(any, headers: anyNamed('headers')))
-        .thenAnswer((_) async => http.Response(fixture('movies.json'), 200));
+    when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
+        (_) async => http.Response(fixture('api_response.json'), 200));
   }
 
   void setUpMockHttpClientSuccess404() {
@@ -37,8 +39,8 @@ void main() {
       final movieUrl =
           'http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${APIKeys.apiKey}';
 
-      when(mockHttpClient.get(any, headers: anyNamed('headers')))
-          .thenAnswer((_) async => http.Response(fixture('movies.json'), 200));
+      when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
+          (_) async => http.Response(fixture('api_response.json'), 200));
       // act
       dataSource.getMostPopularMovies();
       // assert
@@ -54,11 +56,10 @@ void main() {
     () async {
       // arrange
       setUpMockHttpClientSuccess200();
-      final tMovies = await fixtureMovies('movies.json');
       // act
       final result = await dataSource.getMostPopularMovies();
       // assert
-      expect(result, equals(tMovies));
+      expect(result, equals(tMoviesModels));
     },
   );
 
