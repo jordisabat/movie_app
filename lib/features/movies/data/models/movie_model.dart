@@ -35,7 +35,7 @@ class MovieModel extends Movie {
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
-      popularity: json['popularity'],
+      popularity: json['popularity'].toDouble(),
       voteCount: json['vote_count'],
       video: json['video'],
       posterPath: json['poster_path'],
@@ -48,7 +48,7 @@ class MovieModel extends Movie {
           ? new List<int>.from(json['genre_ids'])
           : [],
       title: json['title'],
-      voteAverage: json['vote_average'],
+      voteAverage: json['vote_average'].toDouble(),
       overview: json['overview'],
       releaseDate: json['release_date'],
     );
