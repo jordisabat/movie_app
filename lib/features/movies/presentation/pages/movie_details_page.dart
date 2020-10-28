@@ -27,44 +27,56 @@ class MovieDetailPage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            child: CachedNetworkImage(
-              imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
-                  movie.backdropPath),
-              placeholder: (context, url) => Center(
-                child: CircularProgressIndicator(),
-              ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 20),
-                  RatingBarIndicator(
-                    rating: movie.voteAverage / 2,
-                    itemBuilder: (context, index) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              height: 250,
+              child: CachedNetworkImage(
+                imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
+                    movie.backdropPath),
+                placeholder: (context, url) => Stack(
+                  children: [
+                    Image.asset('assets/images/placeholder_image.png'),
+                    Positioned(
+                      width: MediaQuery.of(context).size.width,
+                      bottom: 20,
+                      child: Container(
+                          child: Center(child: CircularProgressIndicator())),
                     ),
-                    itemCount: 5,
-                    itemSize: 30.0,
-                  ),
-                  SizedBox(height: 10),
-                  Text('${movie.voteAverage} (${movie.voteCount})'),
-                  SizedBox(height: 20),
-                  Text(movie.overview)
-                ],
+                  ],
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
-          ),
-        ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20),
+                    RatingBarIndicator(
+                      rating: movie.voteAverage / 2,
+                      itemBuilder: (context, index) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      itemCount: 5,
+                      itemSize: 30.0,
+                    ),
+                    SizedBox(height: 10),
+                    Text('${movie.voteAverage} (${movie.voteCount})'),
+                    SizedBox(height: 20),
+                    Text(movie.overview)
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
