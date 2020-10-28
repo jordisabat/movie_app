@@ -34,21 +34,24 @@ class MovieDetailPage extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               height: 250,
-              child: CachedNetworkImage(
-                imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
-                    movie.backdropPath),
-                placeholder: (context, url) => Stack(
-                  children: [
-                    Image.asset('assets/images/placeholder_image.png'),
-                    Positioned(
-                      width: MediaQuery.of(context).size.width,
-                      bottom: 20,
-                      child: Container(
-                          child: Center(child: CircularProgressIndicator())),
-                    ),
-                  ],
+              child: Hero(
+                tag: movie.id,
+                child: CachedNetworkImage(
+                  imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
+                      movie.backdropPath),
+                  placeholder: (context, url) => Stack(
+                    children: [
+                      Image.asset('assets/images/placeholder_image.png'),
+                      Positioned(
+                        width: MediaQuery.of(context).size.width,
+                        bottom: 20,
+                        child: Container(
+                            child: Center(child: CircularProgressIndicator())),
+                      ),
+                    ],
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             SingleChildScrollView(

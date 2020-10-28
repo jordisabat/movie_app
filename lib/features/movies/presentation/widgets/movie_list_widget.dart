@@ -13,14 +13,14 @@ class MovieList extends StatelessWidget {
     if (movies == null) {
       return const CircularProgressIndicator();
     } else {
-      return ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: movies.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          final movie = movies[index];
-          return MovieItem(movie);
-        },
-      );
+      return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 0.9),
+          itemCount: movies.length,
+          itemBuilder: (BuildContext context, int index) {
+            final movie = movies[index];
+            return MovieItem(movie);
+          });
     }
   }
 }
