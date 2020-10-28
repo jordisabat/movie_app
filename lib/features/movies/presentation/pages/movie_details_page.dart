@@ -15,70 +15,73 @@ class MovieDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          movie.title,
-          overflow: TextOverflow.ellipsis,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.favorite_outline),
-            onPressed: () {},
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              alignment: Alignment.topCenter,
-              height: 250,
-              child: Hero(
-                tag: movie.id,
-                child: CachedNetworkImage(
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite_outline,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                )
+              ],
+              expandedHeight: MediaQuery.of(context).size.height / 1.5,
+              iconTheme: IconThemeData(
+                color: Colors.white, //change your color here
+              ),
+              flexibleSpace: FlexibleSpaceBar(
+                centerTitle: false,
+                title: Text(
+                  movie.title,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+                background: CachedNetworkImage(
+                  fit: BoxFit.cover,
                   imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
                       movie.backdropPath),
-                  placeholder: (context, url) => Stack(
-                    children: [
-                      Image.asset('assets/images/placeholder_image.png'),
-                      Positioned(
-                        width: MediaQuery.of(context).size.width,
-                        bottom: 20,
-                        child: Container(
-                            child: Center(child: CircularProgressIndicator())),
-                      ),
-                    ],
+                  placeholder: (context, url) => Positioned(
+                    width: MediaQuery.of(context).size.width,
+                    bottom: 20,
+                    child: Container(
+                        child: Center(child: CircularProgressIndicator())),
                   ),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 20),
-                    RatingBarIndicator(
-                      rating: movie.voteAverage / 2,
-                      itemBuilder: (context, index) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      itemCount: 5,
-                      itemSize: 30.0,
-                    ),
-                    SizedBox(height: 10),
-                    Text('${movie.voteAverage} (${movie.voteCount})'),
-                    SizedBox(height: 20),
-                    Text(movie.overview)
-                  ],
-                ),
+          ];
+        },
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RatingBarIndicator(
+                rating: movie.voteAverage / 2,
+                itemBuilder: (context, index) =>
+                    Icon(Icons.star, color: Colors.purple),
+                itemCount: 5,
+                itemSize: 30.0,
               ),
-            ),
-          ],
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('${movie.voteAverage} (${movie.voteCount})'),
+                  Text('Release date: ${movie.releaseDate}'),
+                ],
+              ),
+              SizedBox(height: 20),
+              Text(movie.overview)
+            ],
+          ),
         ),
       ),
     );

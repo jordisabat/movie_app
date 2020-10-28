@@ -11,7 +11,14 @@ class MoviesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie'),
+        title: Text('Popular Movies'),
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {},
+          )
+        ],
       ),
       body: buildBlocProvider(context),
     );
