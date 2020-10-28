@@ -14,8 +14,9 @@ class MovieList extends StatelessWidget {
       return const CircularProgressIndicator();
     } else {
       return GridView.builder(
+          padding: EdgeInsets.all(12),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 0.9),
+              crossAxisCount: 2, childAspectRatio: 0.7),
           itemCount: movies.length,
           itemBuilder: (BuildContext context, int index) {
             final movie = movies[index];
