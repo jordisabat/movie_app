@@ -11,7 +11,6 @@ import '../../domain/usecases/get_most_popular_movies.dart';
 part 'movie_event.dart';
 part 'movie_state.dart';
 
-// Todo: add error code (ex. server_failure = 100) to localize it within the UI (widgets)
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 const String NETWORK_FAILURE_MESSAGE = 'Network Failure';
 
