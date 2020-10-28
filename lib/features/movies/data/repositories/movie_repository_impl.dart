@@ -20,8 +20,8 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Either<Failure, List<Movie>>> getMostPopularMovies() async {
     if (await networkInfo.isConnected) {
       try {
-        final remoteTrivia = await datasource.getMostPopularMovies();
-        return Right(remoteTrivia);
+        final movies = await datasource.getMostPopularMovies();
+        return Right(movies);
       } on ServerException {
         return Left(ServerFailure());
       }
