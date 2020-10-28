@@ -9,18 +9,10 @@ import '../widgets/movie_list_widget.dart';
 class MoviesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Popular Movies'),
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: () {},
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: buildBlocProvider(context),
       ),
-      body: buildBlocProvider(context),
     );
   }
 
