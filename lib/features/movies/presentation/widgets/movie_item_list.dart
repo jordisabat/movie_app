@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:movie_app/features/movies/domain/entities/movie.dart';
+import 'package:movie_app/features/movies/presentation/pages/movie_details_page.dart';
 
 class MovieItem extends StatelessWidget {
   final Movie movie;
@@ -11,7 +12,13 @@ class MovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MovieDetailPage(
+                  movie: movie,
+                )),
+      ),
       child: Container(
         width: 20,
         padding: const EdgeInsets.all(6),
