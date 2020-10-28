@@ -28,31 +28,25 @@ class MovieDetailPage extends StatelessWidget {
                   onPressed: () {},
                 )
               ],
+              elevation: 0,
               expandedHeight: MediaQuery.of(context).size.height / 1.5,
               iconTheme: IconThemeData(
                 color: Colors.white, //change your color here
               ),
+              floating: false,
+              pinned: false,
               flexibleSpace: FlexibleSpaceBar(
-                centerTitle: false,
-                title: Text(
-                  movie.title,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                  ),
-                ),
+                centerTitle: true,
+                title: Text(movie.title,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                    )),
                 background: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
                       movie.backdropPath),
-                  placeholder: (context, url) => Positioned(
-                    width: MediaQuery.of(context).size.width,
-                    bottom: 20,
-                    child: Container(
-                        child: Center(child: CircularProgressIndicator())),
-                  ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             ),
@@ -60,8 +54,7 @@ class MovieDetailPage extends StatelessWidget {
         },
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               RatingBarIndicator(
                 rating: movie.voteAverage / 2,
