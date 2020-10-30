@@ -5,12 +5,25 @@ import 'package:movie_app/core/images/movie_db_images_provider.dart';
 
 import 'package:movie_app/features/movies/domain/entities/movie.dart';
 
-class MovieDetailPage extends StatelessWidget {
+class MovieDetailPage extends StatefulWidget {
   final Movie movie;
   const MovieDetailPage({
     Key key,
     this.movie,
   }) : super(key: key);
+
+  @override
+  _MovieDetailPageState createState() => _MovieDetailPageState();
+}
+
+class _MovieDetailPageState extends State<MovieDetailPage> {
+  bool _isFavourite = false;
+
+  _onFavouriteSelected() {
+    setState(() {
+      _isFavourite = !_isFavourite;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +35,13 @@ class MovieDetailPage extends StatelessWidget {
               actions: [
                 IconButton(
                   icon: Icon(
-                    Icons.favorite_outline,
-                    color: Colors.white,
+                    Icons.favorite,
+                    color: _isFavourite ? Colors.purple : Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // TODO: save to database
+                    _onFavouriteSelected();
+                  },
                 )
               ],
               elevation: 0,
@@ -37,7 +53,7 @@ class MovieDetailPage extends StatelessWidget {
               pinned: false,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                title: Text(movie.title,
+                title: Text(widget.movie.title,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.white,
@@ -46,7 +62,7 @@ class MovieDetailPage extends StatelessWidget {
                 background: CachedNetworkImage(
                   fit: BoxFit.cover,
                   imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
-                      movie.backdropPath),
+                      widget.movie.backdropPath),
                 ),
               ),
             ),
@@ -57,7 +73,7 @@ class MovieDetailPage extends StatelessWidget {
           child: ListView(
             children: [
               RatingBarIndicator(
-                rating: movie.voteAverage / 2,
+                rating: widget.movie.voteAverage / 2,
                 itemBuilder: (context, index) =>
                     Icon(Icons.star, color: Colors.purple),
                 itemCount: 5,
@@ -67,12 +83,13 @@ class MovieDetailPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('${movie.voteAverage} (${movie.voteCount})'),
-                  Text('Release date: ${movie.releaseDate}'),
+                  Text(
+                      '${widget.movie.voteAverage} (${widget.movie.voteCount})'),
+                  Text('Release date: ${widget.movie.releaseDate}'),
                 ],
               ),
               SizedBox(height: 20),
-              Text(movie.overview)
+              Text(widget.movie.overview)
             ],
           ),
         ),
