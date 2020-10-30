@@ -17,10 +17,10 @@ class MovieRepositoryImpl implements MovieRepository {
   });
 
   @override
-  Future<Either<Failure, List<Movie>>> getMostPopularMovies() async {
+  Future<Either<Failure, List<Movie>>> getMostPopularMovies(int page) async {
     if (await networkInfo.isConnected) {
       try {
-        final movies = await datasource.getMostPopularMovies();
+        final movies = await datasource.getMostPopularMovies(page);
         return Right(movies);
       } on ServerException {
         return Left(ServerFailure());

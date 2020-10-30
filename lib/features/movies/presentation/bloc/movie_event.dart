@@ -7,4 +7,11 @@ abstract class MovieEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetMostPopularMoviesEvent extends MovieEvent {}
+class GetMostPopularMoviesEvent extends MovieEvent {
+  final int page;
+
+  GetMostPopularMoviesEvent(this.page) : super();
+
+  @override
+  List<Object> get props => null;
+}

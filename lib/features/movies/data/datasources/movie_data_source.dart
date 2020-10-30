@@ -12,7 +12,7 @@ abstract class MovieDataSource {
   /// http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key={api_key}
   ///
   /// Throws a [ServerException] for all error codes
-  Future<List<MovieModel>> getMostPopularMovies();
+  Future<List<MovieModel>> getMostPopularMovies(int page);
 }
 
 class MovieDataSourceImpl implements MovieDataSource {
@@ -25,8 +25,8 @@ class MovieDataSourceImpl implements MovieDataSource {
       "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=";
 
   @override
-  Future<List<MovieModel>> getMostPopularMovies() async {
-    final url = '$_url${APIKeys.apiKey}';
+  Future<List<MovieModel>> getMostPopularMovies(int page) async {
+    final url = '$_url${APIKeys.apiKey}&page=$page';
 
     final response = await client.get(
       url,

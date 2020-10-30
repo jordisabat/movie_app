@@ -18,7 +18,7 @@ class MoviesPage extends StatelessWidget {
 
   BlocProvider<MovieBloc> buildBlocProvider(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<MovieBloc>()..add(GetMostPopularMoviesEvent()),
+      create: (_) => sl<MovieBloc>()..add(GetMostPopularMoviesEvent(4)),
       child: BlocBuilder<MovieBloc, MovieState>(
         builder: (context, state) {
           if (state is Loading) {

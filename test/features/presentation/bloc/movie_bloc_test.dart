@@ -22,16 +22,16 @@ void main() async {
   final tMovies = await fixtureMovies('movies.json');
 
   void setUpSuccessfullRequest() {
-    when(mockGetMostPopularMovies()).thenAnswer((_) async => Right(tMovies));
+    when(mockGetMostPopularMovies(1)).thenAnswer((_) async => Right(tMovies));
   }
 
   void setUpServerFailureRequest() {
-    when(mockGetMostPopularMovies())
+    when(mockGetMostPopularMovies(1))
         .thenAnswer((_) async => Left(ServerFailure()));
   }
 
   void setUpNetworkFailureRequest() {
-    when(mockGetMostPopularMovies())
+    when(mockGetMostPopularMovies(1))
         .thenAnswer((_) async => Left(NetworkFailure()));
   }
 
@@ -49,10 +49,10 @@ void main() async {
       // arrange
       setUpSuccessfullRequest();
       // act
-      bloc.add(GetMostPopularMoviesEvent());
-      await untilCalled(mockGetMostPopularMovies());
+      bloc.add(GetMostPopularMoviesEvent(1));
+      await untilCalled(mockGetMostPopularMovies(1));
       // assert
-      verify(mockGetMostPopularMovies());
+      verify(mockGetMostPopularMovies(1));
     },
   );
 
@@ -62,10 +62,10 @@ void main() async {
       // arrange
       setUpSuccessfullRequest();
       // act
-      bloc.add(GetMostPopularMoviesEvent());
-      await untilCalled(mockGetMostPopularMovies());
+      bloc.add(GetMostPopularMoviesEvent(1));
+      await untilCalled(mockGetMostPopularMovies(1));
       // assert
-      verify(mockGetMostPopularMovies());
+      verify(mockGetMostPopularMovies(1));
     },
   );
 
@@ -82,7 +82,7 @@ void main() async {
       ];
       expectLater(bloc, emitsInOrder(expected));
       // assert
-      bloc.add(GetMostPopularMoviesEvent());
+      bloc.add(GetMostPopularMoviesEvent(1));
     },
   );
 
@@ -99,7 +99,7 @@ void main() async {
       ];
       expectLater(bloc, emitsInOrder(expected));
       // assert
-      bloc.add(GetMostPopularMoviesEvent());
+      bloc.add(GetMostPopularMoviesEvent(1));
     },
   );
   test(
@@ -115,7 +115,7 @@ void main() async {
       ];
       expectLater(bloc, emitsInOrder(expected));
       // assert
-      bloc.add(GetMostPopularMoviesEvent());
+      bloc.add(GetMostPopularMoviesEvent(1));
     },
   );
 
@@ -124,7 +124,7 @@ void main() async {
     () async {
       // arrange
       setUpNetworkFailureRequest();
-      when(mockGetMostPopularMovies())
+      when(mockGetMostPopularMovies(1))
           .thenAnswer((_) async => Left(NetworkFailure()));
       // assert later
       final expected = [
@@ -134,7 +134,7 @@ void main() async {
       ];
       expectLater(bloc, emitsInOrder(expected));
       // act
-      bloc.add(GetMostPopularMoviesEvent());
+      bloc.add(GetMostPopularMoviesEvent(1));
     },
   );
 }

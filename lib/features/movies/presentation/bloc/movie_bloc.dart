@@ -26,9 +26,10 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     MovieEvent event,
   ) async* {
     if (event is GetMostPopularMoviesEvent) {
+      //var page = 3;
       yield state;
       yield Loading();
-      final failureOrGetMovies = await getMostPopularMovies();
+      final failureOrGetMovies = await getMostPopularMovies(event.page);
       yield failureOrGetMovies.fold(
         (failure) => Error(message: _mapFailureToMessage(failure)),
         (movies) => Loaded(movies: movies),

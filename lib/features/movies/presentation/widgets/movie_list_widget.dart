@@ -6,14 +6,21 @@ import 'package:movie_app/features/movies/presentation/bloc/movie_bloc.dart';
 
 import 'movie_item_list.dart';
 
-class MovieList extends StatelessWidget {
+class MovieList extends StatefulWidget {
   final List<Movie> movies;
 
   const MovieList({Key key, @required this.movies}) : super(key: key);
 
   @override
+  _MovieListState createState() => _MovieListState();
+}
+
+class _MovieListState extends State<MovieList> {
+  int page = 8;
+
+  @override
   Widget build(BuildContext context) {
-    if (movies == null) {
+    if (widget.movies == null) {
       return const CircularProgressIndicator();
     } else {
       return Scaffold(
@@ -22,12 +29,16 @@ class MovieList extends StatelessWidget {
           elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.refresh),
+              icon: Icon(Icons.more),
               onPressed: () {
+                print(page);
+                setState(() {
+                  page = page + 3;
+                });
                 BlocProvider.of<MovieBloc>(context)
-                    .add(GetMostPopularMoviesEvent());
+                    .add(GetMostPopularMoviesEvent(page));
                 Flushbar(
-                  title: "Updating...",
+                  title: "Updating...$page",
                   message:
                       "Getting the lastest popular movies from The Movie Database platform.",
                   duration: Duration(seconds: 3),
@@ -40,9 +51,9 @@ class MovieList extends StatelessWidget {
             padding: EdgeInsets.all(12),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: 0.7),
-            itemCount: movies.length,
+            itemCount: widget.movies.length,
             itemBuilder: (BuildContext context, int index) {
-              final movie = movies[index];
+              final movie = widget.movies[index];
               return MovieItem(movie);
             }),
       );

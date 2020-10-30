@@ -33,7 +33,7 @@ void main() async {
       // arrange
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
       // act
-      await repository.getMostPopularMovies();
+      await repository.getMostPopularMovies(1);
       // assert
       verify(mockNetworkInfo.isConnected);
     },
@@ -49,12 +49,12 @@ void main() async {
       () async {
         // arrange
         final tMovies = await fixtureMovies('movies.json');
-        when(mockMovieDataSource.getMostPopularMovies())
+        when(mockMovieDataSource.getMostPopularMovies(1))
             .thenAnswer((_) async => tMovies);
         // act
-        final result = await repository.getMostPopularMovies();
+        final result = await repository.getMostPopularMovies(1);
         // assert
-        verify(mockMovieDataSource.getMostPopularMovies());
+        verify(mockMovieDataSource.getMostPopularMovies(1));
         expect(result, equals(Right(tMovies)));
       },
     );
@@ -62,12 +62,12 @@ void main() async {
       'it should return server failure when the call to movie data source is unsuccessful',
       () async {
         // arrange
-        when(mockMovieDataSource.getMostPopularMovies())
+        when(mockMovieDataSource.getMostPopularMovies(1))
             .thenThrow(ServerException());
         // act
-        final result = await repository.getMostPopularMovies();
+        final result = await repository.getMostPopularMovies(1);
         // assert
-        verify(mockMovieDataSource.getMostPopularMovies());
+        verify(mockMovieDataSource.getMostPopularMovies(1));
         expect(result, equals(Left(ServerFailure())));
       },
     );
@@ -80,7 +80,7 @@ void main() async {
         // arrange
         when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
         // act
-        final result = await repository.getMostPopularMovies();
+        final result = await repository.getMostPopularMovies(1);
         // assert
         expect(result, equals(Left(NetworkFailure())));
       },

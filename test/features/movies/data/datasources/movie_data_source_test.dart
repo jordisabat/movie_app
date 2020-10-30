@@ -42,7 +42,7 @@ main() async {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('api_response.json'), 200));
       // act
-      dataSource.getMostPopularMovies();
+      dataSource.getMostPopularMovies(1);
       // assert
       verify(mockHttpClient.get(
         movieUrl,
@@ -57,7 +57,7 @@ main() async {
       // arrange
       setUpMockHttpClientSuccess200();
       // act
-      final result = await dataSource.getMostPopularMovies();
+      final result = await dataSource.getMostPopularMovies(1);
       // assert
       expect(result, equals(tMoviesModels));
     },
@@ -71,7 +71,7 @@ main() async {
           (_) async => http.Response(
               fixture('api_response_results_field_is_missing.json'), 200));
       // act
-      final result = await dataSource.getMostPopularMovies();
+      final result = await dataSource.getMostPopularMovies(1);
       // assert
       expect(result, equals([]));
     },
@@ -85,7 +85,7 @@ main() async {
           (_) async => http.Response(
               fixture('api_response_results_field_is_empty.json'), 200));
       // act
-      final result = await dataSource.getMostPopularMovies();
+      final result = await dataSource.getMostPopularMovies(1);
       // assert
       expect(result, equals([]));
     },
@@ -99,7 +99,7 @@ main() async {
       // act
       final call = dataSource.getMostPopularMovies;
       // assert
-      expect(() => call(), throwsA(TypeMatcher<ServerException>()));
+      expect(() => call(1), throwsA(TypeMatcher<ServerException>()));
     },
   );
 }

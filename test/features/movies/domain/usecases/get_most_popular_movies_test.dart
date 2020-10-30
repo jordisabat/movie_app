@@ -74,13 +74,13 @@ void main() {
     'should get most popular movies from the repository',
     () async {
       // arrange
-      when(mockMovieRepository.getMostPopularMovies())
+      when(mockMovieRepository.getMostPopularMovies(1))
           .thenAnswer((_) async => Right(tMovies));
       // act
-      final movies = await usecase();
+      final movies = await usecase(1);
       // assert
       expect(movies, Right(tMovies));
-      verify(mockMovieRepository.getMostPopularMovies());
+      verify(mockMovieRepository.getMostPopularMovies(1));
     },
   );
 }
