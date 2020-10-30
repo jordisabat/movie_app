@@ -59,10 +59,13 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                       color: Colors.white,
                       fontSize: 16.0,
                     )),
-                background: CachedNetworkImage(
-                  fit: BoxFit.cover,
-                  imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
-                      widget.movie.backdropPath),
+                background: Hero(
+                  tag: widget.movie.id,
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: MovieDbImagesProvider.getMovieDbImageHighQuality(
+                        widget.movie.backdropPath),
+                  ),
                 ),
               ),
             ),

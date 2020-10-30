@@ -26,6 +26,9 @@ For each movie we can see it's details
 
 ![Screenshot]('./../docs/screenshot_details.png)
 
+## Workflow
+
+![App_animation]('./../docs/animation.gif)
 
 
 ### Future work
