@@ -37,7 +37,7 @@ main() async {
     () async {
       // arrange
       final movieUrl =
-          'http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${APIKeys.apiKey}';
+          'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${APIKeys.apiKey}';
 
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('api_response.json'), 200));
